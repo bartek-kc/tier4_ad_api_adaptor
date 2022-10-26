@@ -17,8 +17,8 @@ from launch.actions import SetLaunchConfiguration
 from launch.conditions import IfCondition
 from launch.conditions import UnlessCondition
 from launch.substitutions import LaunchConfiguration
-from launch_ros.actions import ComposableNodeContainer
 from launch_ros.descriptions import ComposableNode
+from autoware_utils.respawnable_node_container import RespawnableNodeContainer
 
 
 def generate_launch_description():
@@ -376,7 +376,7 @@ def generate_launch_description():
         )
     )
 
-    container = ComposableNodeContainer(
+    container = RespawnableNodeContainer(
         name="awapi_relay_container",
         namespace="awapi",
         package="rclcpp_components",
